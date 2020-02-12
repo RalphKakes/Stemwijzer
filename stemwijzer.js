@@ -1,0 +1,1 @@
+var questionCount = 0;
