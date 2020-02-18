@@ -8,15 +8,18 @@
     <title>Stemwijzer</title>
 </head>
 <section>
-<body onload="start()">
+    <body>
         <div class="container" style="text-align: center; margin-top: 150px;">
-            <div class="card" style="text-align: center; margin-top: 75px;">
+            <div class="card" style="text-align: center;">
                 <div class="row">
                     <div class="col-md-6">
-                        <div class="card-block">
+                        <div class="card-block" style="margin-top: 75px;">
                             <h4 class="card-title">Stemwijzer</h4>
                             <p class="card-text">Test uw politieke voorkeur aan de hand van 30 stellingen.</p>
-                            <button style="text-align: center" type="button" class="btn btn-secondary" onclick="">Start</button>
+                            <button style="text-align: center; display: inline" type="button" class="btn btn-secondary" onclick="start()" id="startButton">Start</button>
+                            <button style="text-align: center; display: none;" type="button" class="btn btn-secondary" id="button1">Eens</button>
+                            <button style="text-align: center; display: none;" type="button" class="btn btn-secondary" id="button2">Geen van beide</button>
+                            <button style="text-align: center; display: none;" type="button" class="btn btn-secondary" id="button3">Oneens</button>
                         </div>
                     </div>
                     <div class="col-md-6">
