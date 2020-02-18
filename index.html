@@ -4,16 +4,34 @@
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Stemwijzer</title>
 </head>
-<body>
-<img>
-    <h1 style="text-align: center; padding-top: 100px;">Stemwijzer</h1>
-    <h1 style="text-align: center">Test uw politieke voorkeur aan de hand van 30 stellingen</h1>
-    <div class="start" style="text-align: center">
-        <button type="button" class="btn btn-secondary" onclick="">Start</button>
-    </div>
+<section>
+<body onload="start()">
+        <div class="container" style="text-align: center; margin-top: 150px;">
+            <div class="card" style="text-align: center; margin-top: 75px;">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="card-block">
+                            <h4 class="card-title">Stemwijzer</h4>
+                            <p class="card-text">Test uw politieke voorkeur aan de hand van 30 stellingen.</p>
+                            <button style="text-align: center" type="button" class="btn btn-secondary" onclick="">Start</button>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="card-img-bottom">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 <script src="data.js"></script>
 <script src="stemwijzer.js"></script>
 </body>
 </html>
+
+<!--eerste wat je moet doen is de vraag op het scherm krijgen
+Loop door je eigen mening heen en dan door die van de partijen, daarna uitkomst.
+-->
