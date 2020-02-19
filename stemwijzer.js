@@ -12,7 +12,8 @@ function start(){
     console.log("test");
 }
 
-function matchParty(){
+
+ /* function matchParty(){
     for (let counter = 0; counter < pro.length; counter++){
         pro[counter].score = 0;
     }
@@ -22,9 +23,9 @@ function matchParty(){
     for (let counter = 0; counter < parties[partyNr].pro.length; counter++){
 
     }
-    // if my like for this meal is equal to the mealfriend its likes then//
+} */
 
-    // find corresponding element in friends en increment its score//
-}
+// if my like for this meal is equal to the mealfriend its likes then//
 
+// find corresponding element in friends en increment its score//
 
