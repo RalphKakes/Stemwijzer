@@ -10,7 +10,21 @@ function start(){
     button3.style.display="inline";
     startButton.style.display="none";
     console.log("test");
+}
 
+function matchParty(){
+    for (let counter = 0; counter < pro.length; counter++){
+        pro[counter].score = 0;
+    }
+    for (let partyNr = 0; partyNr < answers;.length; partyNr++){
+        console.log()
+    }
+    for (let counter = 0; counter < parties[partyNr].pro.length; counter++){
+
+    }
+    // if my like for this meal is equal to the mealfriend its likes then//
+
+    // find corresponding element in friends en increment its score//
 }
 
 
