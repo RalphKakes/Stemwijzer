@@ -4,19 +4,124 @@ body{
     background-repeat: no-repeat;
 }
 
-.background-stemwijzer {
-    /*background-image: url("https://imgd.rgcdn.nl/48d0fd36b59945bea575b4d22eaaa21c/opener/Bent-u-tevreden-over-de-politiek-foto-ANP-Xtra-Lex-van-Lieshout.jpg") !important;*/
-    /*background-size: cover;*/
-    /*height: 100% !important;*/
-    /*background-position: center !important;*/
-    /*background-repeat: no-repeat !important;*/
-    /*background-size: cover !important;*/
-    /*color: red;*/
-}
-
 .card-img-bottom {
     color: #fff;
     height: 20rem;
     background: url("https://www.eufin.nl/images/A_Illustraties/PP.jpg ") center no-repeat;
     background-size: cover;
 }
+
+details #summary::-webkit-details-marker {
+    display:none;
+}
+
+.svg{
+    width: 331px;
+    height: 56px
+}
+
+details[open] #summary ~ * {
+    animation: sweep .5s ease-in-out;
+}
+
+@keyframes sweep {
+    0%    {opacity: 0; margin-left: -10px}
+    100%  {opacity: 1; margin-left: 0px}
+}
+
+.mx-20{
+    margin-right: 20px;
+    margin-left: 20px;
+}
+
+#buttonBack{
+    width: 50px;
+    height: 50px;
+    background-repeat: no-repeat;
+    background-position: 50%;
+    border-radius: 50px;
+    background-color: #E7EAEB;
+    background-image: url(../img/icon-arrow-back.svg);
+}
+
+#multiplyDiv{
+    display: flex;
+}
+
+#bar{
+    transition: .3s width ease-in-out;
+}
+
+.w3-hover-blue:hover{
+    transition: background-color .2s ease;
+}
+
+button {
+    background: gray;
+    box-shadow: 0px 0px 0px transparent;
+    border: 0px solid transparent;
+    text-shadow: 0px 0px 0px transparent;
+}
+
+button:hover {
+    background: gray;
+    box-shadow: 0px 0px 0px transparent;
+    border: 0px solid transparent;
+    text-shadow: 0px 0px 0px transparent;
+
+}
+
+.px-5{
+    padding: 0px 5rem 0px 5rem !important;
+}
+
+.pb-5{
+    padding-bottom: 4rem !important;
+}
+
+.pt-2{
+    padding-top: 2rem !important;
+}
+
+.mt-4{
+    margin-top: 4rem !important;
+}
+
+.mb-4{
+    margin-top: 4rem !important;
+}
+
+.mr-4{
+    margin-right: 4rem !important;
+}
+
+.mt-1{
+    margin-top: 1rem !important;
+}
+
+.mb-0{
+    margin-bottom: 0 !important;
+}
+
+.opinion__subtitle{
+    border-bottom: 2px solid black;
+    font-weight: bold;
+}
+
+#arrowback{
+    width: 50px;
+    height: 50px;
+    background-repeat: no-repeat;
+    background-position: 50%;
+    border-radius: 50px;
+    background-image: url(../img/icon-backspace-right.svg);
+}
+
+details summary::-webkit-details-marker {
+    float:right;
+    padding:.40em;
+}
+
+.party__description{
+     color: #4F4D4D;
+ }

@@ -7,35 +7,66 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Stemwijzer</title>
 </head>
-<section>
-    <body>
-        <div class="container" style="text-align: center; margin-top: 150px;">
-            <div class="card" style="text-align: center;">
-                <div class="row">
-                    <div class="col-md-6">
-                        <div class="card-block" style="margin-top: 75px;">
-                            <h4 class="card-title">Stemwijzer</h4>
-                            <p class="card-text">Test uw politieke voorkeur aan de hand van 30 stellingen.</p>
-                            <button style="text-align: center; display: inline" type="button" class="btn btn-secondary" onclick="start()" id="startButton">Start</button>
-                            <button style="text-align: center; display: none;" type="button" class="btn btn-secondary" id="button1">Eens</button>
-                            <button style="text-align: center; display: none;" type="button" class="btn btn-secondary" id="button2">Geen van beide</button>
-                            <button style="text-align: center; display: none;" type="button" class="btn btn-secondary" id="button3">Oneens</button>
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="card-img-bottom">
-                        </div>
-                    </div>
-                </div>
+<body>
+<div style="background-color: white; position: relative; min-height: 610px;">
+    <div id="bar" ></div>
+    <button onclick="goBack()" id="buttonBack"><img src="img/arrowback.svg"></button>
+    <div id="animate">
+        <div>
+            <div id="titles">
+                <h4 style="font-weight: bold; margin: 0;">Stemwijzer 2e Kamer 2017</h4>
+            </div>
+            <h1 id="stellingTitle" style="font-weight: bold;" >Test uw politieke voorkeur aan de hand van 30 stellingen</h1>
+            <h1 id="stellingStatement" style="font-weight: lighter; min-height: 261px;",</h1>
+            <div id="buttons" style="position: absolute; min-width: 100%;margin-left: -20px; margin-top: 200px !important;">
+                <button style="text-align: center; display: inline" type="button" class="btn btn-secondary" onclick="changeStelling('pro')">Eens</button>
+                <button style="text-align: center; display: inline" type="button" class="btn btn-secondary" onclick="changeStelling('ambivalent')">Geen van beide</button>
+                <button style="text-align: center; display: inline" type="button" class="btn btn-secondary" onclick="changeStelling('contra')">Oneens</button>
+                <button style="text-align: center; display: inline" type="button" class="btn btn-secondary" onclick="changeStelling('none')">Sla de vraag over<img  src="img/arrowahead.svg"></button>
             </div>
         </div>
-    </section>
-<script src="data.js"></script>
+        <div id="footer">
+            <div style="display: flex">
+                <div >
+                    <p>Bekijk de toegankelijke versie voor mensen met een visuele beperking</p>
+                    <p>De StemWijzer maakt geen gebruik van cookies. Klik hier voor de volledige privacy statement</p>
+                </div>
+                <div style="display: flex;justify-content: center;">
+                    <button id="start" style="height: 60px; padding: 0px 100px 0px 100px;" >Start</button>
+                </div>
+            </div>
+            <div>
+                <h4>Of blik terug met de StemmenTracker</h4>
+                <p>Wat hebben de partijen in het verleden waargemaakt van hun verkiezingsbeloften? 'Track' uw stem met de Stemmentracker, een website die terugblikt op 30 Tweede Kamerstemmingen van de afgelopen regeerperiode. Met welke partij stemde u mee?</p>
+            </div>
+        </div>
+    </div>
+    <div id="parties" >
+        <div  style="padding: 30px;">
+            <details class="opinion__party">
+                <summary id="summary">Wat vinden de partijen?</summary>
+                <div style="display: flex; justify-content: center;">
+                    <div>
+                        <h3 class="opinion__subtitle">Eens</h3>
+                        <p id="eens">
+                    </div>
+                    <div>
+                        <h3 class="opinion__subtitle">Geen van beide</h3>
+                        <p id="none">
+                    </div>
+                    <div>
+                        <h3 class="opinion__subtitle">Oneens</h3>
+                        <p id="oneens">
+                    </div>
+                </div>
+            </details>
+        </div>
+    </div>
+    <div id="results" style="margin: 0px 0px 10px 50px;">
+
+    </div>
+</div>
 <script src="stemwijzer.js"></script>
-<script src="opinion.js"></script>
+<script src="opinion.js.js"></script>
 </body>
 </html>
-
-<!--eerste wat je moet doen is de vraag op het scherm krijgen
-Loop door je eigen mening heen en dan door die van de partijen, daarna uitkomst.
--->
