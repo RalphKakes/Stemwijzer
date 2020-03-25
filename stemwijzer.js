@@ -60,3 +60,72 @@ function goBack(){
         getStelling();
     }
 }
+
+function changeStelling(opinion){
+    var newAnswers = {
+        question_id: questionCount,
+        opinion: opinion,
+        heavy: multiply.checked,
+    }
+    if(answers.length === 0){
+        answers.push(newAnswers);
+        questionCount++;
+        var multiplier = 1;
+        if(newAnswers.heavy){
+            multiplier = 2;
+        }
+        for (let i = 0; i < subjects[questionCount].parties.length; i++) {
+            if(subjects[questionCount].parties[i].position === newAnswers.opinion){
+                const party = parties.find(element => element.name === subjects[questionCount].parties[i].name);
+                party.points += multiplier;
+            }
+        }
+    } else{
+        // Finds item
+        const item = answers.find(element => element.question_id === questionCount);
+        // Sets choice if there is no item that exists
+        if(item === undefined){
+            answers.push(newAnswers);
+            var multiplier = 1;
+            if(newAnswers.heavy){
+                multiplier = 2;
+            }
+            for (let i = 0; i < subjects[questionCount].parties.length; i++) {
+                if(subjects[questionCount].parties[i].position === newAnswers.opinion){
+                    const party = parties.find(element => element.name === subjects[questionCount].parties[i].name);
+                    party.points += multiplier;
+                }
+            }
+        } else{
+            // Replaces old choice when going back
+            item.opinion = opinion;
+            item.heavy = multiply.checked;
+        }
+        questionCount++;
+    }
+    getStelling();
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
