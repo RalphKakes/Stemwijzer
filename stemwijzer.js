@@ -7,8 +7,9 @@ var questionCount = 0;
 
 var  answers = [];
 
+parties.forEach(element =>element.points = 0)
 
-    document.getElementById("start").addEventListener("click", function start(){
+document.getElementById("start").addEventListener("click", function start(){
     document.getElementById("titles").style.display = 'none';
     document.getElementById("footer").style.display = 'none';
 
@@ -16,16 +17,17 @@ var  answers = [];
     buttons.classList.remove('invisible');
     buttonBack.classList.remove('invisible');
 
-        getStelling()
+    getStelling()
 });
 
 function getStelling(){
+    console.log('ANSERS LENGTH:' + answers.length)
+    console.log('SUBJECTS LENGTH:' + subjects.length)
     if(answers.length !== subjects.length){
         stellingTitle.innerHTML = questionCount + 1 + '. ' + subjects[questionCount].title
         stellingStatement.innerHTML = subjects[questionCount].statement
-
     } else{
-        showResult();
+        results();
     }
 }
 
@@ -38,32 +40,48 @@ function goBack(){
     }
 }
 
-
 function changeStelling(opinion) {
     var newAnswers = {
         question_id: questionCount,
         opinion: opinion,
     }
-    var yeet = parties.forEach(element =>element.points = 0)
-    console.log(yeet)
-
-
-
-
-    questionCount++;
-    getStelling();
+    if(answers.length === 0){
+        answers.push(newAnswers)
+        questionCount++;
+        // Loops through all parties
+        for (let i = 0; i < subjects[questionCount].parties.length; i++) {
+            //  Checks if your opinion is the same as one of the parties
+            if (subjects[questionCount].parties[i].position === newAnswers.opinion) {
+                // Finds the party from the parties array with name
+                const party = parties.find(element => element.name === subjects[questionCount].parties[i].name);
+                //Add points
+                party.points += 1;
+            }
+        }
     }
-
-
-
-
-function matchOpinions(){
-    // starting points are my answers
-    // loop through my answers for current  subject
-        // loop through parties
-            // compare my answer for current subject
-            // add score to the party that has the same opinion
+    else{
+        // Searches your answers and finds your old answer that matches the current questioncount
+        const item = answers.find(element => element.question_id === questionCount)
+        // Sets opinion if your old answer could not be found
+        if(item === undefined){
+            answers.push(newAnswers)
+            for (let i = 0; i < subjects[questionCount].parties.length; i++) {
+                //  Checks if your opinion is the same as one of the parties
+                if (subjects[questionCount].parties[i].position === newAnswers.opinion) {
+                    // Finds the party from the parties array with name
+                    const party = parties.find(element => element.name === subjects[questionCount].parties[i].name);
+                    //Add points
+                    party.points += 1;
+                }
+            }
+        } else{
+            item.opinion = opinion
+        }
+        questionCount++;
+    }
+    getStelling();
 }
+
 
 
 
