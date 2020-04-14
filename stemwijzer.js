@@ -21,7 +21,7 @@ document.getElementById("start").addEventListener("click", function start(){
 });
 
 function getStelling(){
-    console.log('ANSERS LENGTH:' + answers.length)
+    console.log('ANSWERS LENGTH:' + answers.length)
     console.log('SUBJECTS LENGTH:' + subjects.length)
     if(answers.length !== subjects.length){
         stellingTitle.innerHTML = questionCount + 1 + '. ' + subjects[questionCount].title
@@ -82,6 +82,17 @@ function changeStelling(opinion) {
     getStelling();
 }
 
+function results(){
+    var div = document.getElementById("results")
+    var result = document.createElement("span")
+
+    var length = 100/subjects.length
+    for (let i = 0; i < parties.length;  i++) {
+        var lengthbar = length * parties[i].points
+        result.innerHTML += '<p class="mb-0 mt-1">' + parties[i].name + '</p>' + '<div style="max-width:1000px;width:'+ lengthbar +'%">'+ Math.round(lengthbar) + '%</div>';
+    }
+    div.appendChild(result)
+}
 
 
 
