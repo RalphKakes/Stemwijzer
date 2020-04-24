@@ -23,20 +23,12 @@ document.getElementById("start").addEventListener("click", function start(){
 function getStelling(){
     console.log('ANSWERS LENGTH:' + answers.length)
     console.log('SUBJECTS LENGTH:' + subjects.length)
+    console.log('Answers array' + answers)
     if(answers.length !== subjects.length){
         stellingTitle.innerHTML = questionCount + 1 + '. ' + subjects[questionCount].title
         stellingStatement.innerHTML = subjects[questionCount].statement
     } else{
         results();
-    }
-}
-
-function goBack(){
-    if(questionCount === 0){
-        location.href = "/"
-    } else{
-        questionCount--;
-        getStelling();
     }
 }
 
@@ -46,7 +38,7 @@ function changeStelling(opinion) {
         opinion: opinion,
     }
     if(answers.length === 0){
-        answers.push(newAnswers)
+        answers[questionCount] = newAnswers;
         questionCount++;
         // Loops through all parties
         for (let i = 0; i < subjects[questionCount].parties.length; i++) {
@@ -85,13 +77,22 @@ function changeStelling(opinion) {
 function results(){
     var div = document.getElementById("results")
     var result = document.createElement("span")
-
     var length = 100/subjects.length
     for (let i = 0; i < parties.length;  i++) {
         var lengthbar = length * parties[i].points
+        // gives percentage of party
         result.innerHTML += '<p class="mb-0 mt-1">' + parties[i].name + '</p>' + '<div style="max-width:1000px;width:'+ lengthbar +'%">'+ Math.round(lengthbar) + '%</div>';
     }
     div.appendChild(result)
+}
+
+function goBack(){
+    if(questionCount === 0){
+        location.reload();
+    } else{
+        questionCount--;
+        getStelling();
+    }
 }
 
 
