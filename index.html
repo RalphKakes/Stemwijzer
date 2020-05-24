@@ -17,7 +17,7 @@
                 <h4 style="font-weight: bold; margin: 0;">Stemwijzer 2e Kamer 2017</h4>
             </div>
             <h1 id="stellingTitle" style="font-weight: bold;" >Test uw politieke voorkeur aan de hand van 30 stellingen</h1>
-            <div id="buttons" style="position: absolute; min-width: 100%;margin-left: 20px; margin-top: 200px !important;">
+            <div id="buttons" style="display: none; position: absolute; min-width: 100%;margin-left: 20px; margin-top: 200px !important;">
                 <button style="text-align: center; display: inline" type="button" class="btn btn-secondary" onclick="changeStelling('pro')">Eens</button>
                 <button style="text-align: center; display: inline" type="button" class="btn btn-secondary" onclick="changeStelling('none')">Geen van beide</button>
                 <button style="text-align: center; display: inline" type="button" class="btn btn-secondary" onclick="changeStelling('contra')">Oneens</button>
@@ -31,6 +31,14 @@
                 <div >
                     <p>Bekijk de toegankelijke versie voor mensen met een visuele beperking</p>
                     <p>De StemWijzer maakt geen gebruik van cookies. Klik hier voor de volledige privacy statement</p>
+                </div>
+                <div>
+                    <span>Show only Big parties</span>
+                    <input id="onlyBig" type="checkbox">
+                </div>
+                <div>
+                    <span>Show only Secular parties</span>
+                    <input id="onlySecular" type="checkbox">
                 </div>
                 <div style="display: flex;justify-content: center;">
                     <button id="start" style="height: 60px; padding: 0px 100px 0px 100px;"  >Start</button>
@@ -46,7 +54,7 @@
 
     </div>
 </div>
-<script src="opinion.js"></script>
+<script src="data.js"></script>
 <script src="stemwijzer.js"></script>
 </body>
 </html>
