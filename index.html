@@ -14,9 +14,9 @@
     <div id="animate">
         <div>
             <div id="titles">
-                <h4 style="font-weight: bold; margin: 0;">Stemwijzer 2e Kamer 2017</h4>
+                <h4 style="font-weight: bold; margin: 0; text-align: center">Stemwijzer 2e Kamer 2017</h4>
             </div>
-            <h1 id="stellingTitle" style="font-weight: bold;" >Test uw politieke voorkeur aan de hand van 30 stellingen</h1>
+            <h1 id="stellingTitle" style="font-weight: bold; text-align: center" >Test uw politieke voorkeur aan de hand van 30 stellingen</h1>
             <div id="buttons" style="display: none; position: absolute; min-width: 100%;margin-left: 20px; margin-top: 200px !important;">
                 <button style="text-align: center; display: inline" type="button" class="btn btn-secondary" onclick="changeStelling('pro')">Eens</button>
                 <button style="text-align: center; display: inline" type="button" class="btn btn-secondary" onclick="changeStelling('none')">Geen van beide</button>
@@ -26,22 +26,25 @@
             </div>
             <h3 id="stellingStatement" style="font-weight: lighter; min-height: 261px;"></h3>
         </div>
+        <div id="filterbuttons" style="display: none;">
+            <div>
+                <span>Show only Big parties</span>
+                <input id="onlyBig" type="checkbox">
+            </div>
+            <div>
+                <span>Show only Secular parties</span>
+                <input id="onlySecular" type="checkbox">
+            </div>
+            <button onclick="calculateResult()">Show results</button>
+        </div>
         <div id="footer">
+            <div style="display: flex;justify-content: center;">
+                <button id="start" style="height: 60px; padding: 0px 100px 0px 100px;"  >Start</button>
+            </div>
             <div style="display: flex">
-                <div >
-                    <p>Bekijk de toegankelijke versie voor mensen met een visuele beperking</p>
-                    <p>De StemWijzer maakt geen gebruik van cookies. Klik hier voor de volledige privacy statement</p>
-                </div>
-                <div>
-                    <span>Show only Big parties</span>
-                    <input id="onlyBig" type="checkbox">
-                </div>
-                <div>
-                    <span>Show only Secular parties</span>
-                    <input id="onlySecular" type="checkbox">
-                </div>
-                <div style="display: flex;justify-content: center;">
-                    <button id="start" style="height: 60px; padding: 0px 100px 0px 100px;"  >Start</button>
+                <div style="margin-bottom: 20px;">
+                    <p style="text-align: center;">Bekijk de toegankelijke versie voor mensen met een visuele beperking</p>
+                    <p style="text-align: center;">De StemWijzer maakt geen gebruik van cookies. Klik hier voor de volledige privacy statement</p>
                 </div>
             </div>
             <div>
@@ -54,7 +57,7 @@
 
     </div>
 </div>
-<script src="data.js"></script>
+<script src="http://stemwijzer.dvc-icta.nl/testdata.js"></script>
 <script src="stemwijzer.js"></script>
 </body>
 </html>
