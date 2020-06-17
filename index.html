@@ -8,22 +8,21 @@
     <title>Stemwijzer</title>
 </head>
 <body>
-<div style="background-color: white; position: relative; min-height: 610px;">
+<div>
     <div id="bar" ></div>
     <button onclick="goBack()" id="buttonBack"><img src="img/arrowback.svg"></button>
     <div id="animate">
-        <div>
+        <div class="card" style="width: 75rem; height: 45rem; margin-left: 330px;">
             <div id="titles">
-                <h4 style="font-weight: bold; margin: 0; text-align: center">Stemwijzer 2e Kamer 2017</h4>
+                <h4 style="font-weight: bold; margin: 0; text-align: center; padding-top: 20px;">Stemwijzer 2e Kamer 2017</h4>
             </div>
-            <h1 id="stellingTitle" style="font-weight: bold; text-align: center" >Test uw politieke voorkeur aan de hand van 30 stellingen</h1>
+            <h1 id="stellingTitle" style="font-weight: bold; text-align: center; padding: 25px;" >Test uw politieke voorkeur aan de hand van 30 stellingen</h1>
             <div id="buttons" style="display: none; position: absolute; min-width: 100%;margin-left: 20px; margin-top: 200px !important;">
                 <button style="text-align: center; display: inline" type="button" class="btn btn-secondary" onclick="changeStelling('pro')">Eens</button>
                 <button style="text-align: center; display: inline" type="button" class="btn btn-secondary" onclick="changeStelling('none')">Geen van beide</button>
                 <button style="text-align: center; display: inline" type="button" class="btn btn-secondary" onclick="changeStelling('contra')">Oneens</button>
                 <button style="text-align: center; display: inline" type="button" class="btn btn-secondary" onclick="changeStelling('skipped')">Sla de vraag over<img  src="img/arrowahead.svg"></button>
                 <input type="checkbox" id="multiply">
-            </div>
             <h3 id="stellingStatement" style="font-weight: lighter; min-height: 261px;"></h3>
         </div>
         <div id="filterbuttons" style="display: none;">
@@ -38,23 +37,24 @@
             <button onclick="calculateResult()">Show results</button>
         </div>
         <div id="footer">
-            <div style="display: flex;justify-content: center;">
+            <div style="display: flex;justify-content: center; margin-top: 150px; margin-bottom: 50px;">
                 <button id="start" style="height: 60px; padding: 0px 100px 0px 100px;"  >Start</button>
             </div>
-            <div style="display: flex">
+            <div style="">
                 <div style="margin-bottom: 20px;">
                     <p style="text-align: center;">Bekijk de toegankelijke versie voor mensen met een visuele beperking</p>
                     <p style="text-align: center;">De StemWijzer maakt geen gebruik van cookies. Klik hier voor de volledige privacy statement</p>
                 </div>
             </div>
             <div>
-                <h4>Of blik terug met de StemmenTracker</h4>
-                <p>Wat hebben de partijen in het verleden waargemaakt van hun verkiezingsbeloften? 'Track' uw stem met de Stemmentracker, een website die terugblikt op 30 Tweede Kamerstemmingen van de afgelopen regeerperiode. Met welke partij stemde u mee?</p>
+                <h4 style="text-align: center">Of blik terug met de StemmenTracker</h4>
+                <p style="text-align: center">Wat hebben de partijen in het verleden waargemaakt van hun verkiezingsbeloften? 'Track' uw stem met de Stemmentracker, een website die terugblikt op 30 Tweede Kamerstemmingen van de afgelopen regeerperiode. Met welke partij stemde u mee?</p>
             </div>
         </div>
-    </div>
-    <div id="results" style="margin: 0px 0px 10px 50px;">
+            <div id="results" style="margin: 0px 0px 10px 50px;">
 
+            </div>
+        </div>
     </div>
 </div>
 <script src="http://stemwijzer.dvc-icta.nl/testdata.js"></script>
