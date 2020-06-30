@@ -5,8 +5,8 @@ const buttons = document.getElementById('buttons');
 const buttonBack = document.getElementById('buttonBack');
 // doubles the answer if checkbox is clicked
 const multiply = document.getElementById('multiply');
-const onlySecular = document.getElementById('onlySecular')
-const onlyBig = document.getElementById('onlyBig')
+const onlySecular = document.getElementById('onlySecular');
+const onlyBig = document.getElementById('onlyBig');
 // shows the minimum size the party must be to be a big party when sorting
 const minSize = 18;
 var questionCount = 0;
@@ -16,21 +16,23 @@ var  answers = [];
 
 parties.forEach(element =>element.points = 0);
 
-document.getElementById("start").addEventListener("click", function start(){
-document.getElementById("buttons").style.display = 'block';
-document.getElementById("titles").style.display = 'none';
-document.getElementById("footer").style.display = 'none';
-
+/*
+* This function just starts the app, adds the buttons and removes the titles and footer
+ */
+ function start(){
+    document.getElementById("buttons").style.display = 'block';
+    document.getElementById("titles").style.display = 'none';
+    document.getElementById("footer").style.display = 'none';
     stellingStatement.classList.remove('invisible');
     buttonBack.classList.remove('invisible');
 
-    getStelling()
-});
+    getStatement()
+};
 
 /*
 *This function sets the correct title and statement for the current questioncount
  */
-function getStelling(){
+function getStatement(){
     // console.log('ANSWERS LENGTH:' + answers.length);
     // console.log('SUBJECTS LENGTH:' + subjects.length);
     // console.log('Answers array' + answers);
@@ -46,27 +48,27 @@ function getStelling(){
     }
 }
 /*
-*
+*  this function looks for your answer and then adds points based on your opinion
  */
-function changeStelling(opinion) {
-    //  saves your newanswers in a new answers object
-    var newAnswers = {
+function changeStatement(opinion) {
+    //  saves your newanswer in a new answers object
+    var newAnswer = {
         question_id: questionCount,
         opinion: opinion,
         heavy: multiply.checked,
     }
     if(answers.length === 0){
-        answers[questionCount] = newAnswers;
+        answers[questionCount] = newAnswer;
         questionCount++;
 
         // Loops through all parties
         for (let i = 0; i < subjects[questionCount].parties.length; i++) {
             //  Checks if your opinion is the same as one of the parties
-            if (subjects[questionCount].parties[i].position === newAnswers.opinion) {
+            if (subjects[questionCount].parties[i].position === newAnswer.opinion) {
                 // Finds the party from the parties array with name
                 const party = parties.find(element => element.name !== subjects[questionCount].parties[i].name);
                 //Add points
-                if (newAnswers.heavy){
+                if (newAnswer.heavy){
                     party.points += 2;
                 } else {
                     party.points +=1;
@@ -80,14 +82,14 @@ function changeStelling(opinion) {
         // console.log(item);
         // Sets opinion if your old answer could not be found
         if(item === undefined){
-            answers.push(newAnswers);
+            answers.push(newAnswer);
             for (let i = 0; i < subjects[questionCount].parties.length; i++) {
                 //  Checks if your opinion is the same as one of the parties
-                if (subjects[questionCount].parties[i].position === newAnswers.opinion) {
+                if (subjects[questionCount].parties[i].position === newAnswer.opinion) {
                     // Finds the party from the parties array with name
                     const party = parties.find(element => element.name === subjects[questionCount].parties[i].name);
                     //Add points
-                    if (newAnswers.heavy) {
+                    if (newAnswer.heavy) {
                         party.points += 2;
                     } else {
                         party.points += 1;
@@ -100,7 +102,7 @@ function changeStelling(opinion) {
             // loops through parties.
             for (let i = 0; i < subjects[questionCount].parties.length; i++) {
                 // looks what party has the same position as your answer.
-                if (subjects[questionCount].parties[i].position === newAnswers.opinion) {
+                if (subjects[questionCount].parties[i].position === newAnswer.opinion) {
                     const party = parties.find(element => element.name === subjects[questionCount].parties[i].name);
                     if (multiply.checked) {
                         party.points += 2;
@@ -112,10 +114,12 @@ function changeStelling(opinion) {
         }
         questionCount++;
     }
-    getStelling();
+    getStatement();
 }
 
-// Calculates the results based on the settings you entered 
+/*
+* Calculates the results based on the settings you entered
+ */
 function calculateResult(){
     document.getElementById("filterbuttons").style.display = 'none';
     // Looks if both big parties and secular is turned on
@@ -135,21 +139,25 @@ function calculateResult(){
 }
 
 
-// Shows result from the showResult() function
+/*
+* Shows result from the showResult() function
+ */
 function showResult(part){
     var div = document.getElementById("results");
     var result = document.createElement("span");
     var length = 100/subjects.length;
     for (let i = 0; i < part.length; i++) {
         var lengthbar = length * part[i].points;
-        result.innerHTML += '<p class="mb-0 mt-1">' + part[i].name + '</p>' + '<div style="max-width:1000px;">'+ Math.round(lengthbar) + '%</div>';
+        result.innerHTML += '<p class="mb-0 mt-1" >' + part[i].name + '</p>' + '<div style="max-width:1000px;">'+ Math.round(lengthbar) + '%</div>';
     }
     div.appendChild(result)
 }
 
 
 
-// Gets parties where secular is true
+/*
+* Gets parties where secular is true
+ */
 function getSecular(){
     var arr = [];
     for (let i = 0; i < parties.length; i++) {
@@ -161,7 +169,9 @@ function getSecular(){
 }
 
 
-// Gets parties where big party is is higer than the minsize
+/*
+* Gets parties where big party is is higer than the minsize
+ */
 function getBigParty(){
     var arr = [];
     for (let i = 0; i < parties.length; i++) {
@@ -173,7 +183,9 @@ function getBigParty(){
 }
 
 
-// Gets parties where secular is true and the parties is bigger than the minsize
+/*
+* Gets parties where secular is true and the parties is bigger than the minsize
+ */
 function getBigAndSecular(){
     var arr = [];
     for (let i = 0; i < parties.length; i++) {
@@ -184,18 +196,6 @@ function getBigAndSecular(){
     return arr
 }
 
-function compare(a, b) {
-    let comparison = 0;
-    let scoreA = a.score;
-    let scoreB = b.score;
-    if (scoreA > scoreB) {
-        comparison = -1;
-    } else if (scoreA < scoreB) {
-        comparison = 1;
-    }
-    return comparison;
-}
-
 
 // Go back ;)
 function goBack(){
@@ -203,9 +203,10 @@ function goBack(){
         location.reload();
     } else{
         questionCount--;
-        getStelling();
+        getStatement();
     }
 }
+
 
 
 
