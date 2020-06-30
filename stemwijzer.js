@@ -12,7 +12,7 @@ const minSize = 18;
 var questionCount = 0;
 
 
-var  answers = [];
+var answers = [];
 
 parties.forEach(element =>element.points = 0);
 
@@ -30,91 +30,65 @@ parties.forEach(element =>element.points = 0);
 };
 
 /*
-*This function sets the correct title and statement for the current questioncount
+* This function sets the correct title and statement for the current questioncount
  */
 function getStatement(){
-    // console.log('ANSWERS LENGTH:' + answers.length);
-    // console.log('SUBJECTS LENGTH:' + subjects.length);
-    // console.log('Answers array' + answers);
     multiply.checked = false;
-    // if questioncount isnt equal to ammount of questions then sets the question in the title
+    // If questioncount isnt equal to ammount of questions then sets the question in the title
     if(answers.length !== subjects.length){
         stellingTitle.innerHTML = questionCount + 1 + '. ' + subjects[questionCount].title;
         stellingStatement.innerHTML = subjects[questionCount].statement;
     } else{
         document.getElementById("buttons").style.display = 'none';
         document.getElementById("filterbuttons").style.display = 'block';
-        // calculateResult();
     }
 }
 /*
-*  this function looks for your answer and then adds points based on your opinion
+*  This function looks for your answer and then adds points based on your opinion
  */
 function changeStatement(opinion) {
-    //  saves your newanswer in a new answers object
-    var newAnswer = {
+    //  Saves your yourAnswer in a new answers object
+    var yourAnswer = {
         question_id: questionCount,
         opinion: opinion,
         heavy: multiply.checked,
     }
     if(answers.length === 0){
-        answers[questionCount] = newAnswer;
-        questionCount++;
-
-        // Loops through all parties
-        for (let i = 0; i < subjects[questionCount].parties.length; i++) {
-            //  Checks if your opinion is the same as one of the parties
-            if (subjects[questionCount].parties[i].position === newAnswer.opinion) {
-                // Finds the party from the parties array with name
-                const party = parties.find(element => element.name !== subjects[questionCount].parties[i].name);
-                //Add points
-                if (newAnswer.heavy){
-                    party.points += 2;
-                } else {
-                    party.points +=1;
-                }
-            }
-        }
-    }
-    else{
-        // Searches your answers and finds your old answer that matches the current questioncount
+        answers[questionCount] = yourAnswer;
+        addPoints(yourAnswer)
+    } else{
         const item = answers.find(element => element.question_id === questionCount);
-        // console.log(item);
-        // Sets opinion if your old answer could not be found
         if(item === undefined){
-            answers.push(newAnswer);
-            for (let i = 0; i < subjects[questionCount].parties.length; i++) {
-                //  Checks if your opinion is the same as one of the parties
-                if (subjects[questionCount].parties[i].position === newAnswer.opinion) {
-                    // Finds the party from the parties array with name
-                    const party = parties.find(element => element.name === subjects[questionCount].parties[i].name);
-                    //Add points
-                    if (newAnswer.heavy) {
-                        party.points += 2;
-                    } else {
-                        party.points += 1;
-                    }
-                }
-            }
-        }else{
+            answers.push(yourAnswer)
+            addPoints(yourAnswer)
+        } else{
             item.opinion = opinion;
             item.heavy = multiply.checked;
-            // loops through parties.
-            for (let i = 0; i < subjects[questionCount].parties.length; i++) {
-                // looks what party has the same position as your answer.
-                if (subjects[questionCount].parties[i].position === newAnswer.opinion) {
-                    const party = parties.find(element => element.name === subjects[questionCount].parties[i].name);
-                    if (multiply.checked) {
-                        party.points += 2;
-                    } else {
-                        party.points += 1;
-                    }
-                }
+            addPoints(yourAnswer)
+        }
+    }
+    questionCount++;
+    getStatement();
+}
+
+/*
+* This function adds points to parties
+*/
+function addPoints(yourAnswer){
+    // Loops through all parties
+    for (let i = 0; i < subjects[questionCount].parties.length; i++) {
+        //  Checks if your opinion is the same as one of the parties
+        if (subjects[questionCount].parties[i].position === yourAnswer.opinion) {
+            // Finds the party from the parties array with name
+            const party = parties.find(element => element.name === subjects[questionCount].parties[i].name);
+            //Add points
+            if (yourAnswer.heavy) {
+                party.points += 2;
+            } else {
+                party.points += 1;
             }
         }
-        questionCount++;
     }
-    getStatement();
 }
 
 /*
@@ -126,10 +100,10 @@ function calculateResult(){
     if(onlyBig.checked && onlySecular.checked){
         showResult(getBigAndSecular());
     }
-    // checks if only Big
+    // Checks if only Big
     else if(onlyBig.checked){
         showResult(getBigParty());
-    }    //checks if only secular
+    }    //Checks if only secular
    
     else if(onlySecular.checked){
         showResult(getSecular());
@@ -206,28 +180,3 @@ function goBack(){
         getStatement();
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
